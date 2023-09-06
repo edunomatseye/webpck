@@ -1,16 +1,16 @@
-//import path from 'path';
 const path = require('path');
-import HtmlWebpackPlugin from 'html-webpack-plugin'
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     "resolve": {
         "extensions": [".tsx", ".ts", ".jsx", ".js"],
     },
-    "entry": path.resolve(__dirname, "./src/main.ts"),
+    "entry": path.resolve(__dirname, "./src/main.tsx"),
     "output": {
-        path: path.resolve(__dirname, "build"),
+        path: path.resolve(__dirname, "./build"),
         "filename": "bundle.js"
     },
+    "mode": "development",
     "module": {
         "rules": [
             {

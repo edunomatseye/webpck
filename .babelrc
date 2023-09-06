@@ -1,12 +1,12 @@
 {
     "presets": [
-        "@bebel/preset-env",
+        "@babel/preset-env",
         [
-            "@bebel/preset-react",
+            "@babel/preset-react",
             {
                 "runtime": "automatic"
             }
         ],
-        "@bebel/preset-typescript"
+        "@babel/preset-typescript"
     ]
 }
