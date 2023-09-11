@@ -1,5 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const RRWP = require('@pmmmwh/react-refresh-webpack-plugin');
+const webpack = require('webpack')
 
 module.exports = {
     "resolve": {
@@ -36,6 +38,10 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, "./src/index.html"),
-        })
+        }),
+        new webpack.DefinePlugin({
+            'process.env.name': JSON.stringify('Edun')
+        }),
+        new RRWP()
     ]
 }

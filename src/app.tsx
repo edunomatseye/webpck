@@ -8,7 +8,7 @@ const App = () => {
     return (
         <>
             <h5>Homepage</h5>
-            <h3>This is the new web-app</h3>
+            <h3>This is the new webpack website</h3>
             <span><Counter /></span>
         </>
     )
