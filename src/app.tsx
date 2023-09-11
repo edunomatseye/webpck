@@ -1,14 +1,15 @@
 import React from "react";
 
 import './styles.css'
+import Counter from './counter'
 
 const App = () => {
-    const [count, setCount] = React.useState(0);
+    
     return (
         <>
             <h5>Homepage</h5>
-            <h3>This is suppose to be the web-app</h3>
-            <span>{count}</span>
+            <h3>This is the new web-app</h3>
+            <span><Counter /></span>
         </>
     )
 }
