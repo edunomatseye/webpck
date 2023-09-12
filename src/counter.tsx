@@ -1,7 +1,6 @@
 import { useState } from 'react'
 
-const Counter = ()=>{
-    const name = "Edun"
+const Counter = () => {
     const [counter, setCounter] = useState(0)
 
     const incrementCounter = () => {
