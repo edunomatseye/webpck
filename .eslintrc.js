@@ -12,6 +12,8 @@ module.exports = {
         'plugin:import/warnings',
         'plugin:import/typescript',
         'plugin:@typescript-eslint/recommended',
+        'prettier',
+        'plugin:prettier/recommended',
     ],
     rules: {
         'no-unused-vars': 'off',
