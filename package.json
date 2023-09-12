@@ -7,7 +7,8 @@
     "dev": "webpack serve --config=webpack.config.js --env env=dev --watch --open",
     "prod": "webpack --config=webpack.config.js --env env=prod",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack build --config=webpack.config.js --env=dev"
+    "build": "webpack build --config=webpack.config.js --env=dev",
+    "lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx,json}\""
   },
   "keywords": [],
   "author": "",
