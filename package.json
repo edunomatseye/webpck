@@ -5,12 +5,13 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack serve --config=webpack.config.js --env env=dev --watch --open",
-    "prod": "webpack --config=webpack.config.js --env env=prod",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack build --config=webpack.config.js --env=dev",
-    "lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx,json}\"",
-    "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
-    "prepare": "husky install"
+    "prod": "nx exec -- webpack --config=webpack.config.js --env env=prod",
+    "test": "nx exec -- pnpm run _test ",
+    "build": "nx exec -- webpack build --config=webpack.config.js --env env=dev",
+    "lint": "nx exec -- eslint --fix \"./src/**/*.{js,jsx,ts,tsx,json}\"",
+    "format": "nx exec -- prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
+    "prepare": "husky install",
+    "_test": "echo \"Error: no test specified\" && exit 1"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json}": [
@@ -60,6 +61,22 @@
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.15.1",
-    "webpack-merge": "^5.9.0"
+    "webpack-merge": "^5.9.0",
+    "nx": "16.8.1",
+    "nx-cloud": "latest"
+  },
+  "nx": {
+    "targets": {
+      "prod": {
+        "outputs": [
+          "{projectRoot}/build"
+        ]
+      },
+      "build": {
+        "outputs": [
+          "{projectRoot}/build"
+        ]
+      }
+    }
   }
 }
