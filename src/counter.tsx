@@ -6,7 +6,19 @@ const Counter = () => {
     const incrementCounter = () => {
         setCounter((prevCounter) => prevCounter + 1)
     }
-    return <button onClick={incrementCounter}>Counter:- {counter}</button>
+
+    const decrementCounter = () => {
+        setCounter((prevCounter) => prevCounter - 1)
+    }
+
+    const render = (
+        <>
+            <button onClick={incrementCounter}>Counter +: {counter}</button>
+            <button onClick={decrementCounter}>Counter -: {counter}</button>
+        </>
+    )
+
+    return render
 }
 
 export default Counter
