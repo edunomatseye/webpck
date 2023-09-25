@@ -13,8 +13,10 @@ const Counter = () => {
 
     const render = (
         <>
-            <button onClick={incrementCounter}>Counter +: {counter}</button>
-            <button onClick={decrementCounter}>Counter -: {counter}</button>
+            <span>{counter}</span>
+            <br />
+            <button onClick={incrementCounter}>Increment Counter</button>
+            <button onClick={decrementCounter}>Decrement Counter</button>
         </>
     )
 
