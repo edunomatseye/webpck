@@ -2,7 +2,7 @@ module.exports = {
     parser: '@typescript-eslint/parser',
     parserOptions: {
         ecmaVersion: 2020,
-        sourceType: 'module'
+        sourceType: 'module',
     },
     extends: [
         'plugin:react/recommended',
@@ -22,11 +22,11 @@ module.exports = {
         'react/prop-types': 'off',
         'react/jsx-uses-react': 'off',
         'react/react-in-jsx-scope': 'off',
-        '@typescript-eslint/explicit-module-boundary-types': 'off'
+        '@typescript-eslint/explicit-module-boundary-types': 'off',
     },
     settings: {
         react: {
-            version: 'detect'
-        }
-    }
+            version: 'detect',
+        },
+    },
 }
