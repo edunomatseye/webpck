@@ -1,0 +1,55 @@
+{
+  "name": "localstorage",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "localstorage/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/localstorage",
+        "main": "localstorage/src/index.ts",
+        "tsConfig": "localstorage/tsconfig.lib.json",
+        "assets": [
+          "localstorage/*.md"
+        ],
+        "generatePackageJson": true,
+        "format": [
+          "cjs"
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "localstorage/**/*.ts",
+          "localstorage/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
+      "options": {
+        "jestConfig": "localstorage/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}
