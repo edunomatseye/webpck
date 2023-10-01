@@ -36,6 +36,7 @@
     "@babel/preset-typescript": "^7.22.15",
     "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.7.0",
+    "@nx/js": "^16.9.1",
     "@nx/react": "^16.8.1",
     "@nx/workspace": "^16.8.1",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.11",
