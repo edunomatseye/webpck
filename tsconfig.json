@@ -21,7 +21,7 @@
     "skipLibCheck": true,
     "paths": {
       "localstorage": [
-        "localstorage/src/index.ts"
+        "src/library/localstorage/src/index.ts"
       ]
     }
   },
