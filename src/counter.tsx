@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 const Counter = () => {
     const [counter, setCounter] = useState(0)
@@ -11,7 +11,7 @@ const Counter = () => {
         setCounter((prevCounter) => prevCounter - 1)
     }
 
-    const render = (
+    return (
         <>
             <span>{counter}</span>
             <br />
@@ -19,8 +19,6 @@ const Counter = () => {
             <button onClick={decrementCounter}>Decrement Counter</button>
         </>
     )
-
-    return render
 }
 
 export default Counter

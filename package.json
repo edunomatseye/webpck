@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack serve --config=webpack.config.js --env env=dev --watch --open",
+    "dev": "nx exec -- webpack serve --config=webpack.config.js --env env=dev --watch --open",
     "prod": "nx exec -- webpack --config=webpack.config.js --env env=prod",
     "test": "nx exec -- pnpm run _test ",
     "build": "nx exec -- webpack build --config=webpack.config.js --env env=dev",
