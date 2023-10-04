@@ -1,19 +1,56 @@
-import React, { useState } from 'react'
+import React, { useReducer, forwardRef, useImperativeHandle } from 'react'
 
-const Counter = () => {
-    const [counter, setCounter] = useState(0)
+const initialState = {
+    count: 0,
+    error: '',
+}
+type State = typeof initialState
+type ActionType = 'Increment' | 'Decrement' | 'Reset'
+const reducer = (
+    state: State,
+    { type, payload }: { type: ActionType; payload: number }
+) => {
+    switch (type) {
+        case 'Increment':
+            return { ...state, count: state.count + payload }
+        case 'Decrement':
+            return { ...state, count: state.count - payload }
+        case 'Reset':
+            return { ...initialState }
+        default:
+            return state
+    }
+}
+export type CounterRef = {
+    resetCounter: () => void
+}
+
+type CounterProps = {
+    count?: number
+}
+
+const Counter = (props: CounterProps, ref: React.Ref<CounterRef>) => {
+    const [counter, dispatch] = useReducer(reducer, initialState)
 
     const incrementCounter = () => {
-        setCounter((prevCounter) => prevCounter + 1)
+        dispatch({ type: 'Increment', payload: 1 })
     }
 
     const decrementCounter = () => {
-        setCounter((prevCounter) => prevCounter - 1)
+        dispatch({ type: 'Decrement', payload: 1 })
     }
+
+    const resetCounter = () => {
+        dispatch({ type: 'Reset', payload: 0 })
+    }
+
+    useImperativeHandle(ref, () => ({
+        resetCounter,
+    }))
 
     return (
         <>
-            <span>{counter}</span>
+            <span>{counter.count}</span>
             <br />
             <button onClick={incrementCounter}>Increment Counter</button>
             <button onClick={decrementCounter}>Decrement Counter</button>
@@ -21,4 +58,4 @@ const Counter = () => {
     )
 }
 
-export default Counter
+export default forwardRef(Counter)
