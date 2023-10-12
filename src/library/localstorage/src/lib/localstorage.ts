@@ -32,7 +32,7 @@ export const setLocalStorageItem = <K extends Key, V extends Value<K>>(
 }
 
 function stringifyToken(ObjectSchema: z.ZodSchema) {
-    return z.string().transform((arg) => {
+    return z.string().transform((arg: string) => {
         ObjectSchema?.parse(arg)
     })
 }
