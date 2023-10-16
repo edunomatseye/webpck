@@ -9,9 +9,18 @@ import {
     uniqueIndex,
     text,
 } from 'drizzle-orm/sqlite-core'
+import { pgEnum } from 'drizzle-orm/pg-core'
 
 const sqlite = new Database('sqite.db')
 const db: BetterSQLite3Database = drizzle(sqlite)
+
+export const continentEnum = pgEnum('continentEnum', [
+    'Africa',
+    'North America',
+    'South America',
+    'Asia',
+    'Europe',
+])
 
 export const employee = sqliteTable('employee', {
     id: integer('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
@@ -37,3 +46,12 @@ export const cities = sqliteTable('cities', {
     name: text('name'),
     countryId: integer('country_id').references(() => countries.id),
 })
+
+export const users = sqliteTable('users', {
+    id: integer('id').primaryKey(),
+    fullname: text('full_name'),
+    phone: integer('phone'),
+})
+
+export type User = typeof users.$inferSelect
+export type InsertUser = typeof users.$inferInsert
