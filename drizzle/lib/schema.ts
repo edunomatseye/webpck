@@ -8,6 +8,7 @@ import {
     integer,
     uniqueIndex,
     text,
+    index,
 } from 'drizzle-orm/sqlite-core'
 import { pgEnum } from 'drizzle-orm/pg-core'
 
@@ -47,11 +48,20 @@ export const cities = sqliteTable('cities', {
     countryId: integer('country_id').references(() => countries.id),
 })
 
-export const users = sqliteTable('users', {
-    id: integer('id').primaryKey(),
-    fullname: text('full_name'),
-    phone: integer('phone'),
-})
+export const users = sqliteTable(
+    'users',
+    {
+        id: integer('id').primaryKey(),
+        fullname: text('full_name'),
+        phone: integer('phone'),
+    },
+    (table) => {
+        return {
+            fullnameIdx: index('fullname_idx').on(table.fullname),
+            phoneIdx: uniqueIndex('phone_idx').on(table.phone),
+        }
+    }
+)
 
 export type User = typeof users.$inferSelect
 export type InsertUser = typeof users.$inferInsert
