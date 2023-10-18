@@ -42,11 +42,17 @@ export const countries = sqliteTable(
     }
 )
 
-export const cities = sqliteTable('cities', {
-    id: integer('id').primaryKey(),
-    name: text('name'),
-    countryId: integer('country_id').references(() => countries.id),
-})
+export const cities = sqliteTable(
+    'cities',
+    {
+        id: integer('id').primaryKey(),
+        name: text('name'),
+        countryId: integer('country_id').references(() => countries.id),
+    },
+    (table) => ({
+        nameIdx: uniqueIndex('name_idx').on(table.name),
+    })
+)
 
 export const users = sqliteTable(
     'users',
