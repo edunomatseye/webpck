@@ -23,11 +23,19 @@ export const continentEnum = pgEnum('continentEnum', [
     'Europe',
 ])
 
-export const employee = sqliteTable('employee', {
-    id: integer('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
-    fullName: text('full_name'),
-    salary: integer('salary'),
-})
+export const employee = sqliteTable(
+    'employee',
+    {
+        id: integer('id', { mode: 'number' }).primaryKey({
+            autoIncrement: true,
+        }),
+        fullName: text('full_name'),
+        salary: integer('salary'),
+    },
+    (table) => ({
+        fullNameIdx: uniqueIndex('full_name_idx').on(table.fullName),
+    })
+)
 
 export const countries = sqliteTable(
     'countries',
