@@ -82,6 +82,4 @@ export const users = sqliteTable(
 export type User = typeof users.$inferSelect
 export type InsertUser = typeof users.$inferInsert
 
-const insertUser: User = (user: InsertUser) => {
-    return db.insert(users).values(user).run()
-}
+const result: User[] = db.select().from(users).all()
