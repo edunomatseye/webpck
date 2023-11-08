@@ -5,7 +5,7 @@ const initialState = {
     error: '',
 }
 type State = typeof initialState
-type ActionType = 'Increment' | 'Decrement' | 'Reset'
+type ActionType = 'Increment' | 'Decrement' | 'Reset' | 'Initialize'
 const reducer = (
     state: State,
     { type, payload }: { type: ActionType; payload: number }
@@ -15,6 +15,8 @@ const reducer = (
             return { ...state, count: state.count + payload }
         case 'Decrement':
             return { ...state, count: state.count - payload }
+        case 'Initialize':
+            return { ...state, count: payload }
         case 'Reset':
             return { ...initialState }
         default:
@@ -44,6 +46,10 @@ const Counter = (props: CounterProps, ref: React.Ref<CounterRef>) => {
         dispatch({ type: 'Reset', payload: 0 })
     }
 
+    const initializeCounter = () => {
+        dispatch({ type: 'Initialize', payload: 0 })
+    }
+
     useImperativeHandle(ref, () => ({
         resetCounter,
     }))
@@ -54,6 +60,7 @@ const Counter = (props: CounterProps, ref: React.Ref<CounterRef>) => {
             <br />
             <button onClick={incrementCounter}>Increment Counter</button>
             <button onClick={decrementCounter}>Decrement Counter</button>
+            <button onClick={initializeCounter}>Initialize Counter</button>
         </>
     )
 }
